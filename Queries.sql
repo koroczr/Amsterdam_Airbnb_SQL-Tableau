@@ -75,12 +75,12 @@ WHERE
 
 
 SELECT 
-    host_id, host_name, COUNT(host_id)
+    host_id, host_name, COUNT(host_id) as number_of_apartments 
 FROM
     listings
 GROUP BY host_id
-HAVING COUNT(host_id) > 20
-ORDER BY COUNT(host_id) DESC;
+HAVING number_of_apartments  > 20
+ORDER BY number_of_apartments  DESC;
 
 
 
