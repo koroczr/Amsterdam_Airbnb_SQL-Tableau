@@ -30,19 +30,55 @@ LIMIT 10;
 # Avarage price based on the neighborhoods (with and without number of the minimum nights).
 
 SELECT 
-    neighbourhood, avg(price)*avg(minimum_nights) AS price_w_nights
+    neighbourhood,
+    AVG(minimum_nights) AS avarage_minimum_nights,
+    AVG(price) AS avg_price,
+    AVG(price) * AVG(minimum_nights) AS price_w_nights
 FROM
     listings
 GROUP BY neighbourhood
-ORDER BY avg(price)*avg(minimum_nights) DESC
-LIMIT 1000;
+ORDER BY AVG(price) * AVG(minimum_nights) DESC
+LIMIT 100;
+
+
+-- What is the most visited neighborhoods?
 
 SELECT 
-    neighbourhood, AVG(minimum_nights) AS avarage_minimum_nights
+    l.neighbourhood, COUNT(l.neighbourhood)
+FROM
+    listings AS l
+        JOIN
+    reviews AS r ON l.id = r.listing_id
+GROUP BY l.neighbourhood
+ORDER BY COUNT(l.neighbourhood) DESC;
+
+-- Who does have more than 20 apartments? People name and location of apartments.
+
+
+SELECT 
+    host_id,
+    host_name,
+    latitude,
+    longitude,
+    room_type,
+    price,
+    minimum_nights
 FROM
     listings
-GROUP BY neighbourhood
-ORDER BY AVG(minimum_nights) DESC
-LIMIT 1000;
+WHERE
+    host_id IN (SELECT 
+            host_id
+        FROM
+            listings
+        GROUP BY host_id
+        HAVING COUNT(host_id) > 20);
 
+
+SELECT 
+    host_id, host_name, COUNT(host_id)
+FROM
+    listings
+GROUP BY host_id
+HAVING COUNT(host_id) > 20
+ORDER BY COUNT(host_id) DESC;
 

@@ -1,0 +1,23 @@
+neighbourhood,count(l.neighbourhood)
+Centrum-West,86102
+"De Baarsjes - Oud-West",70054
+Centrum-Oost,55562
+"De Pijp - Rivierenbuurt",52682
+Westerpark,30574
+Zuid,27923
+Oud-Oost,24203
+"Bos en Lommer",20175
+"Oostelijk Havengebied - Indische Buurt",18913
+Oud-Noord,16037
+Noord-West,9121
+Slotervaart,8934
+Watergraafsmeer,8746
+"IJburg - Zeeburgereiland",8072
+Noord-Oost,6027
+"De Aker - Nieuw Sloten",4702
+"Geuzenveld - Slotermeer",4603
+"Buitenveldert - Zuidas",4098
+"Gaasperdam - Driemond",3900
+Bijlmer-Centrum,3213
+Osdorp,3132
+Bijlmer-Oost,2508
